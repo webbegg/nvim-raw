@@ -1,14 +1,18 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>')
-vim.keymap.set('n', '<leader>q', ':bufdo bdelete<CR>')
-vim.keymap.set('n', '<S-w>', 'b')
-vim.keymap.set('n', '<S-u>', '<C-r>')
-vim.keymap.set('i', 'jj', '<Esc>')
-vim.keymap.set('n', '<C-s>', ':w<CR>')
-vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>')
--- vim.keymap.set('n', '<C-w>', ':bd<CR>')
+local keymapOptions = { silent = true }
+
+vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', keymapOptions)
+vim.keymap.set('n', '<leader>q', ':bufdo bdelete<CR>', keymapOptions)
+vim.keymap.set('n', '<S-w>', 'b', keymapOptions)
+vim.keymap.set('n', '<S-u>', '<C-r>', keymapOptions)
+vim.keymap.set('i', 'jj', '<Esc>', keymapOptions)
+vim.keymap.set('n', '<C-s>', ':w<CR>', keymapOptions)
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>', keymapOptions)
+vim.keymap.set('v', '<C-s>', '<Esc>:w<CR>', keymapOptions)
+vim.keymap.set('n', '<C-q>', ':bd<CR>', keymapOptions)
+vim.keymap.set('n', '<C-w><C-p>', ':e #<CR>', keymapOptions)
 
 -- Allow gf to open non-existent files
 vim.keymap.set('', 'gf', ':edit <cfile><CR>')
@@ -46,7 +50,11 @@ vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
 
 -- Move text up and down
-vim.keymap.set('i', '<A-j>', '<Esc>:move .+1<CR>==gi')
-vim.keymap.set('i', '<A-k>', '<Esc>:move .-2<CR>==gi')
-vim.keymap.set('x', '<A-j>', ":move '>+1<CR>gv-gv")
-vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv")
+-- vim.keymap.set('n', '<A-Down>', '<Esc>:move .+1<CR>==gi')
+-- vim.keymap.set('n', '<A-Up>', '<Esc>:move .-2<CR>==gi')
+-- vim.keymap.set('i', '<A-Down>', '<Esc>:move .+1<CR>==gi')
+-- vim.keymap.set('i', '<A-Up>', '<Esc>:move .-2<CR>==gi')
+-- vim.keymap.set('x', '<A-Down>', ":move '>+1<CR>gv-gv")
+-- vim.keymap.set('x', '<A-Up>', ":move '<-2<CR>gv-gv")
+-- vim.keymap.set('v', '<A-Down>', ":move '>+1<CR>gv-gv")
+-- vim.keymap.set('v', '<A-Up>', ":move '<-2<CR>gv-gv")
