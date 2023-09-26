@@ -16,3 +16,5 @@
   base0E = '#a89bb9', 
   base0F = '#b8b8b8' -- '#bb9584'
 })
+
+vim.api.nvim_set_hl(0, "LineNr", {fg = "#393939"})

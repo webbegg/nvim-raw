@@ -49,12 +49,19 @@ vim.keymap.set('n', '<C-Down>', ':resize -2<CR>')
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
 
--- Move text up and down
--- vim.keymap.set('n', '<A-Down>', '<Esc>:move .+1<CR>==gi')
--- vim.keymap.set('n', '<A-Up>', '<Esc>:move .-2<CR>==gi')
--- vim.keymap.set('i', '<A-Down>', '<Esc>:move .+1<CR>==gi')
--- vim.keymap.set('i', '<A-Up>', '<Esc>:move .-2<CR>==gi')
--- vim.keymap.set('x', '<A-Down>', ":move '>+1<CR>gv-gv")
--- vim.keymap.set('x', '<A-Up>', ":move '<-2<CR>gv-gv")
--- vim.keymap.set('v', '<A-Down>', ":move '>+1<CR>gv-gv")
--- vim.keymap.set('v', '<A-Up>', ":move '<-2<CR>gv-gv")
+-- Move text up
+vim.api.nvim_set_keymap('n', '<C-k>', ':m .-2<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<C-k>', ':m \'<-2<CR>gv=gv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-k>', '<Esc>:m .-2<CR>==gi', { noremap = true, silent = true })
+
+-- Move text down
+vim.api.nvim_set_keymap('n', '<C-j>', ':m .+1<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<C-j>', ':m \'>+1<CR>gv=gv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-j>', '<Esc>:m .+1<CR>==gi', { noremap = true, silent = true })
+
+-- Disable arrow keys in normal mode
+vim.api.nvim_set_keymap('n', '<Up>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Down>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Left>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Right>', '<Nop>', { noremap = true, silent = true })
+

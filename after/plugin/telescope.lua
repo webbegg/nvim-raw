@@ -23,8 +23,10 @@ telescope.setup({
     mappings = {
       i = {
         ['<esc>'] = actions.close,
-        ['<C-Down>'] = actions.cycle_history_next,
-        ['<C-Up>'] = actions.cycle_history_prev,
+        ['<S-j>'] = actions.cycle_history_next,
+        ['<S-k>'] = actions.cycle_history_prev,
+        ['<C-k>'] = actions.move_selection_previous,
+        ['<C-j>'] = actions.move_selection_next,
       },
     },
     file_ignore_patterns = { '.git/' },
@@ -51,9 +53,9 @@ telescope.setup({
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('live_grep_args')
 
-vim.keymap.set('n', '<C-p>', [[<cmd>lua require('telescope.builtin').find_files()<CR>]])
-vim.keymap.set('n', '<leader>f', [[<cmd>lua require('telescope.builtin').find_files({ no_ignore = true, prompt_title = 'All Files' })<CR>]]) -- luacheck: no max line length
+vim.keymap.set('n', '<leader>fe', [[<cmd>lua require('telescope.builtin').find_files()<CR>]])
+vim.keymap.set('n', '<leader>fa', [[<cmd>lua require('telescope.builtin').find_files({ no_ignore = true, prompt_title = 'All Files' })<CR>]]) -- luacheck: no max line length
 vim.keymap.set('n', '<leader><leader>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]])
-vim.keymap.set('n', '<S-p>', [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]])
+vim.keymap.set('n', '<leader>fg', [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]])
 vim.keymap.set('n', '<leader>fh', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
 vim.keymap.set('n', '<leader>fs', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
